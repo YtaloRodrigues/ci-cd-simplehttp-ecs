@@ -1,4 +1,4 @@
-FROM golang:alpine AS builder
+FROM 761774289685.dkr.ecr.us-east-1.amazonaws.com/golang:alpine AS builder
 
 # Set necessary environmet variables needed for our image
 ENV GO111MODULE=on \
