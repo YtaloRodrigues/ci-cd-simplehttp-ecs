@@ -1,8 +1,13 @@
 version: 0.2
 
+env:
+  variables:
+    GIT_COMMIT_SHA: '${CODEBUILD_RESOLVED_SOURCE_VERSION}'
+
 phases:
   pre_build:
     commands:
+      - echo $GIT_COMMIT_SHA
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
   build:
     commands:
@@ -27,7 +32,3 @@ artifacts:
     ImageArtifact:
       files:
         - imageDetail.json
-
-cache:
-  paths:
-    - '**/*'
